@@ -24,10 +24,12 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont(serif);
+  textFont('serif');         // ローカルフォントで確認
+  textSize(60);               // 大きめ
   textAlign(CENTER, CENTER);
-  textSize(48);
+  fill(0);                    // 真っ黒で完全不透明
   background(255);
+  text("poke-tints", width / 2, height / 2);
 }
 
 function draw() {
