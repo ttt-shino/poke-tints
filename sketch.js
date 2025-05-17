@@ -24,9 +24,9 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont(splashFont);
+  textFont(serif);
   textAlign(CENTER, CENTER);
-  textSize(100);
+  textSize(48);
   background(255);
 }
 
