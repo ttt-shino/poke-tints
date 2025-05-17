@@ -26,7 +26,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont(splashFont);
   textAlign(CENTER, CENTER);
-  textSize(48);
+  textSize(100);
   background(255);
 }
 
