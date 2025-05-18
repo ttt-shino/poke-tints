@@ -9,6 +9,8 @@ let splashTimer = 0;
 let splashFadeIn = true;
 let splashWaitCounter = 0;
 
+let hasInteracted = false; // 追加
+
 // 肌色パレット（20色）
 const skinTones = [
   '#F3D9CE', '#F9C5B4', '#D96A6A', '#B1786B', '#1F1B1B',
@@ -37,14 +39,6 @@ function draw() {
     imageMode(CENTER);
     tint(255, splashAlpha);
 
-    // === ゆらゆらするシズルの円（肌色からランダムで選び塗りつぶす）===
-    noStroke();
-    let tone = color(random(skinTones));
-    tone.setAlpha(30); // 透明度を抑えてふわっと表示
-    fill(tone);
-    let pulseSize = sin(frameCount * 0.05) * 20 + 100;
-    ellipse(width / 2, height / 2, pulseSize);
-
     // 表示サイズを画面幅の60%、最大500pxに制限
     let targetWidth = min(width * 0.6, 500);
     let aspect = splashImage.height / splashImage.width;
@@ -70,6 +64,15 @@ function draw() {
     return;
   }
 
+  if (!showSplash && !hasInteracted) {
+    noStroke();
+    let tone = color(random(skinTones));
+    tone.setAlpha(30);
+    fill(tone);
+    let pulseSize = sin(frameCount * 0.05) * 20 + 100;
+    ellipse(width / 2, height / 2, pulseSize);
+  }
+
   // マウス押下中は粒子を出し続ける（水道のように）
   if (mouseIsPressed) {
     for (let i = 0; i < 2; i++) {
@@ -84,6 +87,12 @@ function draw() {
     if (particles[i].isDead()) {
       particles.splice(i, 1);
     }
+  }
+}
+
+function mousePressed() {
+  if (!hasInteracted) {
+    hasInteracted = true;
   }
 }
 
