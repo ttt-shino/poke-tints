@@ -37,6 +37,13 @@ function draw() {
     imageMode(CENTER);
     tint(255, splashAlpha);
 
+    // === ゆらゆらするシズルの円 ===
+    noFill();
+    stroke(0, 20); // 黒で薄く
+    strokeWeight(1);
+    let pulseSize = sin(frameCount * 0.05) * 20 + 100;
+    ellipse(width / 2, height / 2, pulseSize);
+
     // 表示サイズを画面幅の60%、最大500pxに制限
     let targetWidth = min(width * 0.6, 500);
     let aspect = splashImage.height / splashImage.width;
