@@ -33,26 +33,26 @@ function setup() {
 function draw() {
   background(255, 255);
 
-  if (showSplash) {
-    imageMode(CENTER);
-    tint(255, splashAlpha);
+if (showSplash) {
+  imageMode(CENTER);
+  tint(255, splashAlpha);
 
-    let w = min(width * 0.6, 500); // 最大幅500px or 画面の60%
-    let h = (splashImage.height / splashImage.width) * w;
+  // 表示サイズを画面幅の60%、最大500pxに制限
+  let targetWidth = min(width * 0.6, 500);
+  let aspect = splashImage.height / splashImage.width;
+  let targetHeight = targetWidth * aspect;
 
-    image(splashImage, width / 2, height / 2, w, h); // リサイズして描画
+  image(splashImage, width / 2, height / 2, targetWidth, targetHeight);
 
-    splashTimer++;
-
-    if (splashTimer > 100) {
-      splashAlpha -= 5;
-    }
-
-    if (splashAlpha <= 0) {
-      showSplash = false;
-    }
-    return;
+  splashTimer++;
+  if (splashTimer > 60) {
+    splashAlpha -= 5;
   }
+  if (splashAlpha <= 0) {
+    showSplash = false;
+  }
+  return;
+}
 
   // マウス押下中は粒子を出し続ける（水道のように）
   if (mouseIsPressed) {
