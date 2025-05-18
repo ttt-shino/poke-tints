@@ -75,6 +75,13 @@ function draw() {
     fill(shimmerColor);
     let pulseSize = sin(frameCount * 0.05) * 20 + 100;
     ellipse(width / 2, height / 2, pulseSize);
+
+    fill('#a7615d');
+    noStroke();
+    textAlign(CENTER, TOP);
+    textSize(16);
+    textFont('Avenir');
+    text("touch to start", width / 2, height / 2 + 80);
   }
 
   // マウス押下中は粒子を出し続ける（水道のように）
