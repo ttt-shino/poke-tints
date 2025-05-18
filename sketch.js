@@ -16,8 +16,14 @@ const skinTones = [
 ];
 
 function preload() {
-  splashImage = loadImage("splash.png");
+  splashImage = loadImage("splash.png",
+    () => console.log("✅ Splash image loaded"),
+    (err) => console.error("❌ Failed to load splash:", err)
+  );
 }
+// function preload() {
+//   splashImage = loadImage("splash.png");
+// }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
