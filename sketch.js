@@ -6,6 +6,8 @@ let splashImage;
 let showSplash = true;
 let splashAlpha = 255;
 let splashTimer = 0;
+let splashFadeIn = true;
+let splashWaitCounter = 0;
 
 // 肌色パレット（20色）
 const skinTones = [
@@ -31,26 +33,34 @@ function setup() {
 function draw() {
   background(color('#fbf5f0'));
 
-if (showSplash) {
-  imageMode(CENTER);
-  tint(255, splashAlpha);
+  if (showSplash) {
+    imageMode(CENTER);
+    tint(255, splashAlpha);
 
-  // 表示サイズを画面幅の60%、最大500pxに制限
-  let targetWidth = min(width * 0.6, 500);
-  let aspect = splashImage.height / splashImage.width;
-  let targetHeight = targetWidth * aspect;
+    // 表示サイズを画面幅の60%、最大500pxに制限
+    let targetWidth = min(width * 0.6, 500);
+    let aspect = splashImage.height / splashImage.width;
+    let targetHeight = targetWidth * aspect;
 
-  image(splashImage, width / 2, height / 2, targetWidth, targetHeight);
+    image(splashImage, width / 2, height / 2, targetWidth, targetHeight);
 
-  splashTimer++;
-  if (splashTimer > 60) {
-    splashAlpha -= 5;
+    if (splashFadeIn) {
+      splashAlpha += 5;
+      if (splashAlpha >= 255) {
+        splashAlpha = 255;
+        splashFadeIn = false;
+      }
+    } else {
+      splashWaitCounter++;
+      if (splashWaitCounter > 60) {
+        splashAlpha -= 5;
+        if (splashAlpha <= 0) {
+          showSplash = false;
+        }
+      }
+    }
+    return;
   }
-  if (splashAlpha <= 0) {
-    showSplash = false;
-  }
-  return;
-}
 
   // マウス押下中は粒子を出し続ける（水道のように）
   if (mouseIsPressed) {
