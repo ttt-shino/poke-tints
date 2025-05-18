@@ -3,7 +3,8 @@
   "short_name": "poke",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#fbf5f0",
+  "theme_color": "#fbf5f0",
   "description": "粒子アプリpoke",
   "icons": [
     {
