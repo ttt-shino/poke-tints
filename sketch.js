@@ -2,6 +2,11 @@
 
 let particles = [];
 
+let splashImage;
+let showSplash = true;
+let splashAlpha = 255;
+let splashTimer = 0;
+
 // 肌色パレット（20色）
 const skinTones = [
   '#F3D9CE', '#F9C5B4', '#D96A6A', '#B1786B', '#1F1B1B',
@@ -10,6 +15,10 @@ const skinTones = [
   '#F8D9D6', '#F4AFA1', '#C2626B', '#8A5F58', '#2C1F20'
 ];
 
+function preload() {
+  splashImage = loadImage("splash.png");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255);
@@ -17,6 +26,23 @@ function setup() {
 
 function draw() {
   background(255, 255); // フレーム毎に白でうっすら上書き（残像表現）
+
+  if (showSplash) {
+    tint(255, splashAlpha);
+    imageMode(CENTER);
+    image(splashImage, width / 2, height / 2);
+
+    splashTimer++;
+
+    if (splashTimer > 60) {
+      splashAlpha -= 5;
+    }
+
+    if (splashAlpha <= 0) {
+      showSplash = false;
+    }
+    return;
+  }
 
   // マウス押下中は粒子を出し続ける（水道のように）
   if (mouseIsPressed) {
