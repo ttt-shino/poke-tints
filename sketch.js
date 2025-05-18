@@ -25,16 +25,20 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255); // フレーム毎に白でうっすら上書き（残像表現）
+  background(255, 255);
 
   if (showSplash) {
-    tint(255, splashAlpha);
     imageMode(CENTER);
-    image(splashImage, width / 2, height / 2);
+    tint(255, splashAlpha);
+
+    let w = min(width * 0.6, 500); // 最大幅500px or 画面の60%
+    let h = (splashImage.height / splashImage.width) * w;
+
+    image(splashImage, width / 2, height / 2, w, h); // リサイズして描画
 
     splashTimer++;
 
-    if (splashTimer > 60) {
+    if (splashTimer > 100) {
       splashAlpha -= 5;
     }
 
