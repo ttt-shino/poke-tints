@@ -15,7 +15,6 @@ const skinTones = [
   '#F8D9D6', '#F4AFA1', '#C2626B', '#8A5F58', '#2C1F20'
 ];
 
-const backgroundColor = color('#fbf5f0'); //背景色
 
 function preload() {
   splashImage = loadImage("splash.png",
@@ -26,11 +25,11 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(backgroundColor);
+  background(color('#fbf5f0'));
 }
 
 function draw() {
-  background(backgroundColor);
+  background(color('#fbf5f0'));
 
 if (showSplash) {
   imageMode(CENTER);
