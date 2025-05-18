@@ -4,7 +4,7 @@ let particles = [];
 
 let splashImage;
 let showSplash = true;
-let splashAlpha = 255;
+let splashAlpha = 0;
 let splashTimer = 0;
 let splashFadeIn = true;
 let splashWaitCounter = 0;
