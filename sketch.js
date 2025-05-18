@@ -72,9 +72,12 @@ function draw() {
       shimmerColor.setAlpha(30);
     }
     noStroke();
+    drawingContext.shadowBlur = 30;           // 外側ぼかし
+    drawingContext.shadowColor = shimmerColor;
     fill(shimmerColor);
     let pulseSize = sin(frameCount * 0.05) * 20 + 100;
     ellipse(width / 2, height / 2, pulseSize);
+    drawingContext.shadowBlur = 0;            // 次の描画に影響しないようにリセット
 
     fill('#a7615d');
     noStroke();
