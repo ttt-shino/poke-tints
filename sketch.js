@@ -11,6 +11,8 @@ let splashWaitCounter = 0;
 
 let hasInteracted = false; // 追加
 
+let shimmerColor; // 追加
+
 // 肌色パレット（20色）
 const skinTones = [
   '#F3D9CE', '#F9C5B4', '#D96A6A', '#B1786B', '#1F1B1B',
@@ -65,10 +67,12 @@ function draw() {
   }
 
   if (!showSplash && !hasInteracted) {
+    if (!shimmerColor) {
+      shimmerColor = color(random(skinTones));
+      shimmerColor.setAlpha(30);
+    }
     noStroke();
-    let tone = color(random(skinTones));
-    tone.setAlpha(30);
-    fill(tone);
+    fill(shimmerColor);
     let pulseSize = sin(frameCount * 0.05) * 20 + 100;
     ellipse(width / 2, height / 2, pulseSize);
   }
