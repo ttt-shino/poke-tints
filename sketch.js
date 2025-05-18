@@ -15,23 +15,22 @@ const skinTones = [
   '#F8D9D6', '#F4AFA1', '#C2626B', '#8A5F58', '#2C1F20'
 ];
 
+const backgroundColor = color('#fbf5f0'); //背景色
+
 function preload() {
   splashImage = loadImage("splash.png",
     () => console.log("✅ Splash image loaded"),
     (err) => console.error("❌ Failed to load splash:", err)
   );
 }
-// function preload() {
-//   splashImage = loadImage("splash.png");
-// }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255);
+  background(backgroundColor);
 }
 
 function draw() {
-  background(255, 255);
+  background(backgroundColor);
 
 if (showSplash) {
   imageMode(CENTER);
