@@ -37,10 +37,11 @@ function draw() {
     imageMode(CENTER);
     tint(255, splashAlpha);
 
-    // === ゆらゆらするシズルの円 ===
-    noFill();
-    stroke(0, 20); // 黒で薄く
-    strokeWeight(1);
+    // === ゆらゆらするシズルの円（肌色からランダムで選び塗りつぶす）===
+    noStroke();
+    let tone = color(random(skinTones));
+    tone.setAlpha(30); // 透明度を抑えてふわっと表示
+    fill(tone);
     let pulseSize = sin(frameCount * 0.05) * 20 + 100;
     ellipse(width / 2, height / 2, pulseSize);
 
